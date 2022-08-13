@@ -11,7 +11,6 @@
   (setq browse-url-generic-program (getenv "BROWSER"))
   (setq browse-url-browser-function 'browse-url-generic)
   )
-
 
 ;; WSL Copy/Paste Solution found from stackexchange:
 ;; https://emacs.stackexchange.com/questions/39210/copy-paste-from-windows-clipboard-in-wsl-terminal
@@ -73,6 +72,7 @@
 
 ;; Lispy
 (straight-use-package 'lispy)
+(add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
 
 (straight-use-package 'form-feed)
 (global-form-feed-mode)
@@ -80,3 +80,32 @@
 (straight-use-package 'restart-emacs)
 
 (straight-use-package 'magit)
+
+(straight-use-package 'general)
+
+;; insert mode bindings
+(general-define-key
+ :states 'insert
+ "ö" "<escape>"
+ )
+
+;; Normal mode bindings
+(general-define-key
+ :states 'normal
+ "å" "$"
+ )
+
+;; Put in some org clock commands in the global keymap
+;; The global keymap has the lowest priority but
+;; the C-c prefix is often reserved for the user so
+;; other modes are unlikely to overshadow it.
+(general-define-key
+ :prefix "C-c C-x"
+ "C-o" 'org-clock-out
+ "C-x" 'org-clock-in-last
+ )
+
+
+
+
+
