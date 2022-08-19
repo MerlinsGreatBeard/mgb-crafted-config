@@ -27,17 +27,42 @@
     (setq clipboard (replace-regexp-in-string "\r" "" clipboard)) ; Remove Windows ^M characters
     (setq clipboard (substring clipboard 0 -1)) ; Remove newline added by Powershell
     (insert clipboard)))
+
+;; use general for keybindings
+(straight-use-package 'general)
 
-; Bind wsl-copy to C-c C-v
-(global-set-key
- (kbd "C-c C-c")
- 'wsl-copy)
 
-; Bind wsl-paste to C-c C-v
-(global-set-key
- (kbd "C-c C-v")
- 'wsl-paste)
+;; we create this early in the file, it will be used for many states further down
+(general-create-definer ergo-def
+  :states '(normal insert emacs visual)
+  :prefix "SPC"
+  :non-normal-prefix "C-SPC"
+  :prefix-command 'ergo-prefix-command
+  :prefix-map 'ergo-prefix-map)
 
+(ergo-def
+  "a" 'execute-extended-command
+  "ö" 'save-buffer
+  "o" 'other-window
+  "f" 'switch-to-buffer)
+
+
+(straight-use-package 'eyebrowse)
+(eyebrowse-mode)
+;; eyebrowse workspaces on SPC-r-"x"
+(ergo-def
+  :infix "r"
+  "0" 'eyebrowse-switch-to-window-config-0
+  "1" 'eyebrowse-switch-to-window-config-1
+  "2" 'eyebrowse-switch-to-window-config-2
+  "3" 'eyebrowse-switch-to-window-config-3
+  "4" 'eyebrowse-switch-to-window-config-4
+  "5" 'eyebrowse-switch-to-window-config-5
+  "6" 'eyebrowse-switch-to-window-config-6
+  "6" 'eyebrowse-switch-to-window-config-6
+  "7" 'eyebrowse-switch-to-window-config-7
+  "8" 'eyebrowse-switch-to-window-config-8
+  "9" 'eyebrowse-switch-to-window-config-9)
 
 ;; Straight package manager
 ;; https://github.com/radian-software/straight.el#getting-started
@@ -81,7 +106,6 @@
 
 (straight-use-package 'magit)
 
-(straight-use-package 'general)
 
 ;; insert mode bindings
 (general-define-key
@@ -92,8 +116,7 @@
 ;; Normal mode bindings
 (general-define-key
  :states 'normal
- "å" "$"
- )
+ "å" "$")
 
 ;; Put in some org clock commands in the global keymap
 ;; The global keymap has the lowest priority but
@@ -106,6 +129,18 @@
  )
 
 
+
+; Bind wsl-copy to C-c C-v
+(global-set-key
+ (kbd "C-c C-c")
+ 'wsl-copy)
+
+; Bind wsl-paste to C-c C-v
+(global-set-key
+ (kbd "C-c C-v")
+ 'wsl-paste)
+
+
 
 
 
