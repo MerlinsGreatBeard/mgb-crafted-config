@@ -144,6 +144,7 @@
  'wsl-paste)
 
 
-
-
+(setenv "GPG_AGENT_INFO" nil) 
+(require 'epg)
+(setq epg-pinentry-mode 'loopback)
 
