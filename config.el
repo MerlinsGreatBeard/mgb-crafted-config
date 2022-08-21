@@ -44,8 +44,11 @@
   "a" 'execute-extended-command
   "ö" 'save-buffer
   "o" 'other-window
-  "f" 'switch-to-buffer)
-
+  "f" 'switch-to-buffer
+  "l" (lambda ()
+	  (interactive)
+	  (org-time-stamp-inactive '(16))
+	  (org-clock-update-time-maybe)))
 
 (straight-use-package 'eyebrowse)
 (eyebrowse-mode)
@@ -63,6 +66,7 @@
   "7" 'eyebrowse-switch-to-window-config-7
   "8" 'eyebrowse-switch-to-window-config-8
   "9" 'eyebrowse-switch-to-window-config-9)
+
 
 ;; Straight package manager
 ;; https://github.com/radian-software/straight.el#getting-started
@@ -127,7 +131,6 @@
  "C-o" 'org-clock-out
  "C-x" 'org-clock-in-last
  )
-
 
 
 ; Bind wsl-copy to C-c C-v
