@@ -15,7 +15,7 @@
 ;; WSL Copy/Paste Solution found from stackexchange:
 ;; https://emacs.stackexchange.com/questions/39210/copy-paste-from-windows-clipboard-in-wsl-terminal
 (defun wsl-copy (start end)
-  (interactive "r")
+  ;; (interactive "r")
   (shell-command-on-region start end "clip.exe")
   (deactivate-mark))
 
@@ -136,7 +136,7 @@
 ; Bind wsl-copy to C-c C-v
 (global-set-key
  (kbd "C-c C-c")
- 'wsl-copy)
+ 'wsl-copy )
 
 ; Bind wsl-paste to C-c C-v
 (global-set-key
@@ -145,6 +145,18 @@
 
 
 (setenv "GPG_AGENT_INFO" nil) 
+(setenv "GCM_CREDENTIAL_STORE" "cache")
 (require 'epg)
 (setq epg-pinentry-mode 'loopback)
 
+ ;;https://magit.vc/manual/ghub/Storing-a-Token.html 
+(setq auth-sources '("~/.authinfo.gpg") )
+;; NOTE: Make sure to configure a GitHub token before using this package!
+;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
+;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
+(straight-use-package 'forge)
+(with-eval-after-load 'magit
+  (require 'forge)
+  )
+
+(add-hook 'magit-process-prompt-functions 'magit-process-git-credential-manager-core)
