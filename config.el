@@ -72,6 +72,7 @@
   :infix "i"
   "o" #'bookmark-jump
   "p" #'bookmark-set
+  "f" #'find-file
   )
 
 ;; Swiper
