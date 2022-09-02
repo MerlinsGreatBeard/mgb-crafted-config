@@ -66,6 +66,18 @@
   "7" 'eyebrowse-switch-to-window-config-7
   "8" 'eyebrowse-switch-to-window-config-8
   "9" 'eyebrowse-switch-to-window-config-9)
+
+;; Bookmarks
+(ergo-def
+  :infix "i"
+  "o" #'bookmark-jump
+  "p" #'bookmark-set
+  )
+
+;; Swiper
+(straight-use-package 'swiper)
+(ergo-def
+  "l" #'swiper)
 
 
 ;; Straight package manager
@@ -145,7 +157,6 @@
 
 
 ;; (setenv "GPG_AGENT_INFO" nil) 
-;; (setenv "GCM_CREDENTIAL_STORE" "cache")
 ;; (require 'epg)
 ;; (setq epg-pinentry-mode 'loopback)
 
