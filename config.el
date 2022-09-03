@@ -45,10 +45,16 @@
   "ö" 'save-buffer
   "o" 'other-window
   "f" 'switch-to-buffer
+  )
+
+;; ergo-def-c-infix
+(ergo-def
+  :infix "c"
   "l" (lambda ()
-	  (interactive)
-	  (org-time-stamp-inactive '(16))
-	  (org-clock-update-time-maybe)))
+	(interactive)
+	(org-time-stamp-inactive '(16))
+	(org-clock-update-time-maybe))
+  )
 
 (straight-use-package 'eyebrowse)
 (eyebrowse-mode)
