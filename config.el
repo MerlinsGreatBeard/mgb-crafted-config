@@ -81,13 +81,16 @@
   "p" #'bookmark-set
   "f" #'find-file
   )
+
 
 ;; Swiper
 (straight-use-package 'swiper)
 (ergo-def
-  "l" #'swiper)
-
+  "l" #'swiper
+  )
 
+
+
 ;; Straight package manager
 ;; https://github.com/radian-software/straight.el#getting-started
 (defvar bootstrap-version)
@@ -137,10 +140,14 @@
  "ö" "<escape>"
  )
 
+;; avy timer
+(setq avy-timeout-seconds 0.2)
 ;; Normal mode bindings
 (general-define-key
  :states 'normal
- "å" "$")
+ "å" "$"
+ "ö" #'evil-avy-goto-char-timer
+ )
 
 ;; Put in some org clock commands in the global keymap
 ;; The global keymap has the lowest priority but
@@ -150,6 +157,7 @@
  :prefix "C-c C-x"
  "C-o" 'org-clock-out
  "C-x" 'org-clock-in-last
+ "ö" 'org-timer-set-timer
  )
 
 
