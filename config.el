@@ -171,19 +171,3 @@
  (kbd "C-c C-v")
  'wsl-paste)
 
-
-;; (setenv "GPG_AGENT_INFO" nil) 
-;; (require 'epg)
-;; (setq epg-pinentry-mode 'loopback)
-
-;;https://magit.vc/manual/ghub/Storing-a-Token.html 
-;; (setq auth-sources '("~/.authinfo.gpg") )
-;; NOTE: Make sure to configure a GitHub token before using this package!
-;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
-;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
-;; (straight-use-package 'forge)
-;; (with-eval-after-load 'magit
-;;   (require 'forge)
-;;   )
-
-;; (add-hook 'magit-process-prompt-functions 'magit-process-git-credential-manager-core)
