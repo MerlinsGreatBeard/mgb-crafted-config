@@ -39,8 +39,7 @@
   :states '(normal insert emacs visual)
   :prefix "SPC"
   :non-normal-prefix "C-SPC"
-  :prefix-command 'ergo-prefix-command
-  :prefix-map 'ergo-prefix-map)
+  )
 
 (ergo-def
   "a" 'execute-extended-command
