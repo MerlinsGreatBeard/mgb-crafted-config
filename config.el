@@ -1,7 +1,9 @@
 ; Fullscreen
-(toggle-frame-fullscreen)
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . fullscreen)))))
 ;; Text scaling
-(set-face-attribute 'default nil :height 180) 
+(set-face-attribute 'default nil :height 180)
+
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 ;; Browser
