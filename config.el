@@ -171,3 +171,4 @@
  (kbd "C-c C-v")
  'wsl-paste)
 
+(add-hook 'magit-process-prompt-functions 'magit-process-git-credential-manager-core)
