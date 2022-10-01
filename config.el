@@ -172,3 +172,38 @@
  'wsl-paste)
 
 (add-hook 'magit-process-prompt-functions 'magit-process-git-credential-manager-core)
+
+;;; Clojure
+(crafted-package-install-package 'cider)
+(crafted-package-install-package 'clj-refactor)
+(crafted-package-install-package 'clojure-mode)
+(crafted-package-install-package 'flycheck-clojure)
+
+(with-eval-after-load "clojure-mode"
+  (require 'cider)
+  (require 'clj-refactor)
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (clj-refactor-mode 1)
+              ;; keybindings mentioned on clj-refactor github page
+              ;; conflict with cider, use this by default as it does
+              ;; not conflict and is a better mnemonic
+              (clj-add-keybindings-with-prefix "C-c r")))
+
+  (with-eval-after-load "flycheck"
+    (flycheck-clojure-setup)))
+
+(add-hook 'clojure-mode #'aggressive-indent-mode)
+
+;; org download
+;; (crafted-package-install-package 'org-download)
+(crafted-package-install-package 'org-web-tools)
+(with-eval-after-load "org-mode"
+  (autoload 'org-web-tools-insert-link-for-url "org-web-tools"))
+
+(with-eval-after-load "org-mode"
+  ;; org babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . nil)
+     (shell . t))))
