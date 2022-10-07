@@ -46,6 +46,7 @@
   "ö" 'save-buffer
   "o" 'other-window
   "f" 'switch-to-buffer
+  "k" 'kill-this-buffer
   )
 
 ;; ergo-def-c-infix
